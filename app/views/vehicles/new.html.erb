@@ -1,0 +1,16 @@
+<h1 class="text-center">Add new Listing</h1>
+
+<div class="container mb-5">
+  <%= simple_form_for [@user, @vehicle] do |f| %>
+    <%= f.input :type_of_vehicle, collection: ["car", "bike"], prompt: "Select vehicle type" %>
+    <%= f.input :title %>
+    <%= f.input :image_url %>
+    <%= f.input :price_per_day %>
+    <%= f.input :location %>
+    <%= f.input :brand %>
+    <%= f.input :model %>
+    <%= f.input :description %>
+    <%= f.input :year %>
+    <%= f.submit %>
+  <% end %>
+</div>

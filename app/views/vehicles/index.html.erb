@@ -1,0 +1,9 @@
+<h1>vehicles</h1>
+
+<ul>
+  <% @vehicles.each do |vehicle| %>
+  <li><%= vehicle.brand %></li>
+  <% end %>
+</ul>
+
+<%= link_to "New Listing", new_path, class: "btn btn-primary" %>
