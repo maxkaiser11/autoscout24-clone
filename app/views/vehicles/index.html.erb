@@ -1,9 +1,18 @@
-<h1>vehicles</h1>
-
-<ul>
+<h1 class="text-center m-3">All Vehicles</h1>
+<div class="cards">
   <% @vehicles.each do |vehicle| %>
-  <li><%= vehicle.brand %></li>
+  <div class="container">
+    <div class="card-product">
+      <%= image_tag(vehicle.image_url, size: "300x200") %>
+      <div class="card-product-infos">
+        <h2><%= vehicle.brand %></h2>
+        <p><%= vehicle.description %>: <strong><%= vehicle.price_per_day %></strong> CHF</p>
+      </div>
+    </div>
+  </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to "New Listing", new_path, class: "btn btn-primary" %>
+<div class="container text-center">
+  <%= link_to "New Listing", new_path, class: "btn btn-primary mt-3" %>
+</div>
