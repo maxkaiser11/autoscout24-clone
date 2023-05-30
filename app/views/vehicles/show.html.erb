@@ -19,9 +19,9 @@
           <%= simple_form_for(Reservation.new) do |f| %>
             <%= f.input :start_date %>
             <%= f.input :end_date %>
-            <%= f.submit %>
+            <%= f.hidden_field :vehicle_id %>
+            <%= f.submit "Reserve", :class => "btn btn-primary mb-3" %>
           <% end %>
-          <%= link_to "Reserve now",  reservations_path %>
       </div>
   </div>
 

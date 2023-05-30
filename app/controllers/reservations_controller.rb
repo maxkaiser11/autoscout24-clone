@@ -18,10 +18,12 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
-    @reservation.vehicle.id = @vehicle.id
+    @reservation.vehicle_id = params[:reservation][:vehicle_id]
     authorize @reservation
     if @reservation.save!
       redirect_to reservations_path
+    else
+      render :new
     end
   end
 
