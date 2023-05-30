@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
 before_action :authenticate_user!, except: :index
-before_action :set_vehicle, only: %i[show destroy]
+before_action :set_vehicle, only: %i[show edit update destroy]
 
   def index
     @vehicles = Vehicle.all
@@ -27,6 +27,14 @@ before_action :set_vehicle, only: %i[show destroy]
   def destroy
     @vehicle.destroy
     redirect_to root_path, status: :see_other
+  end
+
+  def edit
+  end
+
+  def update
+    @vehicle.update(vehicle_params)
+    redirect_to vehicle_path(@vehicle)
   end
 
   private
