@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
 before_action :authenticate_user!, except: :index
-before_action :set_vehicle, only: %i[show]
+before_action :set_vehicle, only: %i[show destroy]
 
   def index
     @vehicles = Vehicle.all
@@ -22,6 +22,11 @@ before_action :set_vehicle, only: %i[show]
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @vehicle.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private

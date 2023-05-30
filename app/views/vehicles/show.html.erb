@@ -1,2 +1,3 @@
 <h1><%= @vehicle.brand %></h1>
 <h2><%= @vehicle.model %></h2>
+<%= link_to "Delete", delete_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary", method: :delete %>
