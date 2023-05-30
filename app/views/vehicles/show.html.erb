@@ -1,3 +1,50 @@
-<h1><%= @vehicle.brand %></h1>
-<h2><%= @vehicle.model %></h2>
+
 <%= link_to 'Edit', edit_vehicle_path(@vehicle), class: 'btn btn-primary' %>
+<div class="container my-3">
+  <div class="row">
+      <div class="col-12 my-3">
+        <%= image_tag(@vehicle.image_url, class: "img-fluid")%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 bg-body-secondary shadow-sm rounded my-3 text-center d-flex align-items-center justify-content-center">
+        <div>
+          <h1 class='title-show'><%= @vehicle.title %></h1>
+          <h2 class='brand-show'><%= @vehicle.brand %></h2>
+          <h3 class="model-show"><%= @vehicle.model %></h3>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-3 bg-body-secondary shadow-sm rounded my-3 justify-content-center">
+        <p class="book">Reserve this <%= @vehicle.type_of_vehicle %></p>
+        <form action="">
+          <label for="check-in-date">Check In</label>
+          <input class="form-control" type="date" name="start" id="">
+          <label for="check-out-date">Check Out</label>
+          <input class="form-control" type="date">
+        </form>
+        <a href="#" class="btn btn-primary my-2">Reserve now</a>
+      </div>
+  </div>
+
+ <div class="row">
+    <div class="col-8 my-3 bg-body-secondary shadow-sm rounded">
+    <h3 class="subheader">Description</h3>
+      <p class='desc'><%= @vehicle.description %></p>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3 d-flex my-3 justify-content-between bg-body-secondary shadow-sm rounded align-items-center">
+      <h3 class="share-title">Share</h3>
+      <h3 class="share"><a class="social" href=""><i class="fa-brands fa-facebook"></i></a>  <a class="social" href=""><i class="fa-brands fa-twitter"></i></a>  <a class="social" href=""><i class="fa-brands fa-instagram"></i></h3></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 my-3 bg-body-secondary shadow-sm rounded">
+      <h3 class="subheader">Specifications</h3>
+      <div class="price-guests">
+        <p>Price per day: <i class="fa-solid fa-euro-sign m-3"><%= @vehicle.price_per_day %></i></p>
+      </div>
+    </div>
+  </div>
+</div>
+
