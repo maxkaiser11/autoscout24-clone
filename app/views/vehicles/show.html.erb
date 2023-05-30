@@ -1,4 +1,7 @@
 
+<%= link_to "Delete", delete_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary", method: :delete %>
+
+
 <%= link_to 'Edit', edit_vehicle_path(@vehicle), class: 'btn btn-primary' %>
 <div class="container my-3">
   <div class="row">

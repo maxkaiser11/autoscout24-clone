@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get 'vehicles/:id/edit', to: 'vehicles#edit', as: :edit_vehicle
   patch 'vehicles/:id', to: 'vehicles#update'
   # resources :vehicles
+  delete 'vehicles/:id', to: 'vehicles#destroy', as: :delete
   devise_for :users
 end
