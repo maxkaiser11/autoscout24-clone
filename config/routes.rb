@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
   root to: 'vehicles#index'
   get 'new', to: "vehicles#new", as: :new_vehicle
   get 'vehicles/:id', to: "vehicles#show", as: :vehicle
