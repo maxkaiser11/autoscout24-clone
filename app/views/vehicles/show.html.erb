@@ -15,13 +15,13 @@
       <div class="col-1"></div>
       <div class="col-3 bg-body-secondary shadow-sm rounded my-3 justify-content-center">
         <p class="book">Reserve this <%= @vehicle.type_of_vehicle %></p>
-        <form action="">
-          <label for="check-in-date">Check In</label>
-          <input class="form-control" type="date" name="start" id="">
-          <label for="check-out-date">Check Out</label>
-          <input class="form-control" type="date">
-        </form>
-        <a href="#" class="btn btn-primary my-2">Reserve now</a>
+
+          <%= simple_form_for(Reservation.new) do |f| %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.submit %>
+          <% end %>
+          <%= link_to "Reserve now",  reservations_path %>
       </div>
   </div>
 
