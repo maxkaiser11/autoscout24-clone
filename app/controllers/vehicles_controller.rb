@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
 before_action :authenticate_user!, except: :index
-before_action :set_vehicle, only: %i[show]
+before_action :set_vehicle, only: %i[show edit update]
 
   def index
     @vehicles = Vehicle.all
@@ -22,6 +22,14 @@ before_action :set_vehicle, only: %i[show]
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @vehicle.update(vehicle_params)
+    redirect_to vehicle_path(@vehicle)
   end
 
   private
