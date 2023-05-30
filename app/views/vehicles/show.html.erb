@@ -16,10 +16,9 @@
       <div class="col-3 bg-body-secondary shadow-sm rounded my-3 justify-content-center">
         <p class="book">Reserve this <%= @vehicle.type_of_vehicle %></p>
 
-          <%= simple_form_for(Reservation.new) do |f| %>
-            <%= f.input :start_date %>
-            <%= f.input :end_date %>
-            <%= f.hidden_field :vehicle_id %>
+          <%= simple_form_for(@reservation, url: create_reservation_vehicle_path(@vehicle)) do |f| %>
+            <%= f.input :start_date, as: :date %>
+            <%= f.input :end_date, as: :date %>
             <%= f.submit "Reserve", :class => "btn btn-primary mb-3" %>
           <% end %>
       </div>

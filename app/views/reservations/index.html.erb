@@ -1,6 +1,9 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h1>Your Reservations</h1>
 
-<% @reservations.each do |reservation| %>
-  <%= reservation.start_date %>
-<% end %>
+<ol>
+  <% @reservations.each do |reservation| %>
+    <li> Start Date: <%= reservation.start_date %> <br>
+    End Date: <%= reservation.end_date %>
+    <%= image_tag(reservation.vehicle.image_url, class: "img-fluid")%></li>
+  <% end %>
+</ol>

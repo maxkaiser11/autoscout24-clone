@@ -22,6 +22,10 @@ class VehiclePolicy < ApplicationPolicy
     new?
   end
 
+  def create_reservation?
+    true
+  end
+
   def edit?
     record.user == user
   end

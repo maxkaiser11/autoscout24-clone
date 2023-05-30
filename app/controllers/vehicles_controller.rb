@@ -7,6 +7,7 @@ before_action :set_vehicle, only: %i[show edit update destroy]
   end
 
   def show
+    @reservation = Reservation.new
     authorize @vehicle
   end
 
@@ -23,6 +24,19 @@ before_action :set_vehicle, only: %i[show edit update destroy]
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def create_reservation
+    set_vehicle
+    authorize @vehicle
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @reservation.vehicle = @vehicle
+    if @reservation.save
+      redirect_to reservations_path
+    else
+      render :show
     end
   end
 
@@ -43,6 +57,11 @@ before_action :set_vehicle, only: %i[show edit update destroy]
   end
 
   private
+
+
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date, :accepted)
+  end
 
   def vehicle_params
     params.require(:vehicle).permit(:type_of_vehicle, :title, :image_url, :price_per_day, :location, :brand, :model, :description, :year)
