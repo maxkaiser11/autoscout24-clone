@@ -48,6 +48,10 @@
         <p>Price per day: <i class="fa-solid fa-euro-sign m-3"><%= @vehicle.price_per_day %></i></p>
       </div>
     </div>
-  </div>
+    <div class="col-1"></div>
+    <div class="col-3 d-flex my-3 justify-content-evenly bg-body-secondary shadow-sm rounded align-items-center">
+      <%= link_to "Delete", delete_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary", method: :delete %>
+      <%= link_to 'Edit', edit_vehicle_path(@vehicle), class: 'btn btn-primary' %>
+    </div>
+  </>
 </div>
-
