@@ -3,20 +3,22 @@ before_action :authenticate_user!, except: :index
 before_action :set_vehicle, only: %i[show edit update destroy]
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = policy_scope(Vehicle)
   end
 
   def show
-
+    authorize @vehicle
   end
 
   def new
     @vehicle = Vehicle.new
+    authorize @vehicle
   end
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user = current_user
+    authorize @vehicle
     if @vehicle.save
       redirect_to root_path
     else
@@ -24,17 +26,20 @@ before_action :set_vehicle, only: %i[show edit update destroy]
     end
   end
 
-  def destroy
-    @vehicle.destroy
-    redirect_to root_path, status: :see_other
-  end
-
   def edit
+    authorize @vehicle
   end
 
   def update
+    authorize @vehicle
     @vehicle.update(vehicle_params)
     redirect_to vehicle_path(@vehicle)
+  end
+
+  def destroy
+    authorize @vehicle
+    @vehicle.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private
@@ -45,5 +50,9 @@ before_action :set_vehicle, only: %i[show edit update destroy]
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
+  end
+
+  def set_authorization
+    authorize @vehicle
   end
 end
