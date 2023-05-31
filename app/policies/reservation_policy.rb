@@ -2,7 +2,7 @@ class ReservationPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 
@@ -14,7 +14,7 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    record.user == user
   end
 
   def create?
