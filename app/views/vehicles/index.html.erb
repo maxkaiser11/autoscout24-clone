@@ -1,7 +1,7 @@
 <h1 class="text-center m-3">All Vehicles</h1>
 <div class="container">
   <div class="row">
-  <% @vehicles.each do |vehicle| %>
+    <% @vehicles.each do |vehicle| %>
       <div class="card col-3 m-2" style="width: 18rem;">
         <%= image_tag(vehicle.image_url)%>
         <div class="card-body d-flex-col">
@@ -10,7 +10,7 @@
           <%= link_to "Show more", vehicle_path(vehicle), class: "btn btn-primary" %>
         </div>
       </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
