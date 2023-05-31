@@ -1,19 +1,26 @@
-<h1 class="text-center m-3">All Vehicles</h1>
-<div class="container">
-  <div class="row">
-  <% @vehicles.each do |vehicle| %>
-      <div class="card col-3 m-2" style="width: 18rem;">
-        <%= image_tag(vehicle.image_url)%>
-        <div class="card-body d-flex-col">
-          <h5 class="card-title"><%= vehicle.title %></h5>
-          <p class="card-text"><%= vehicle.description %></p>
-          <%= link_to "Show more", vehicle_path(vehicle), class: "btn btn-primary" %>
+<section class="bg-light pt-1 pb-2 shadow-sm">
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-12">
+        <h3 class="text border-bottom mb-4">All Vehicles</h3>
+      </div>
+    </div>
+    <div class="row">
+    <% @vehicles.each do |vehicle| %>
+      <div class="col-3 mb-2 d-flex align-items-stretch">
+        <div class="card">
+          <%= image_tag(vehicle.image_url, class: "card-img-top") %>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><%= vehicle.title %></h5>
+            <p class="card-text mb-4"><%= vehicle.description %></p>
+            <%= link_to "Show more", vehicle_path(vehicle), class: "btn btn-primary mt-auto align-self-start" %>
+          </div>
         </div>
       </div>
-  <% end %>
+    <% end %>
+    </div>
   </div>
-</div>
-
+</section>
 <div class="container text-center">
-  <%= link_to "New Listing", new_vehicle_path, class: "btn btn-primary mt-3" %>
+  <%= link_to "New Listing", new_vehicle_path, class: "btn btn-primary my-3" %>
 </div>
