@@ -31,3 +31,37 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+
+
+.card-reservation {
+  top: 80px;
+  right: 15px;
+  text-align: left;
+  height: 250px;
+  width: 245px;
+  object-fit: cover;
+  box-shadow: inset 0px 0px 200px #000000;
+  border-radius: 25px;
+  background-position: center;
+  background-size: cover;
+  margin: 20px;
+
+}
+
+.card-reservation-text {
+  text-shadow: 3px 5px 5px #000000;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.card-reservation-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.fa-circle-xmark{
+  font-size: 30px;
+  color: #dc2626;
+  text-align: left;
+}
