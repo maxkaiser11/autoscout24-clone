@@ -1,49 +1,50 @@
 <div class="container my-3">
   <div class="row">
-      <div class="col-8 my-3">
-        <%= image_tag(@vehicle.image_url, class: "banner-img")%>
-      </div>
-       <div class="col-3 offset-1 bg-body-secondary shadow-sm rounded my-3 justify-content-center">
+    <div class="col-8 my-3">
+      <%= image_tag(@vehicle.image_url, class: "banner-img")%>
+    </div>
+      <div class="col-3 offset-1 bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box">
         <p class="book">Reserve this <%= @vehicle.type_of_vehicle %></p>
-
           <%= simple_form_for(@reservation, url: create_reservation_vehicle_path(@vehicle)) do |f| %>
             <%= f.input :start_date, as: :date %>
             <%= f.input :end_date, as: :date %>
-            <%= f.submit "Reserve", :class => "btn btn-primary mb-3" %>
+            <%= f.submit "Reserve", :class => "btn btn-primary mb-3 mx-1" %>
           <% end %>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-8 bg-body-secondary shadow-sm rounded my-3 text-center d-flex align-items-center justify-content-center">
-        <div>
-          <h1 class='title-show'><%= @vehicle.title %></h1>
-          <h2 class='brand-show'><%= @vehicle.brand %></h2>
-          <h3 class="model-show"><%= @vehicle.model %></h3>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-8 bg-body-secondary shadow-sm rounded my-3 text-center d-flex align-items-center justify-content-center bg-box">
+      <div>
+        <h2 class='title-show p-3'><%= @vehicle.title %></h2>
       </div>
+    </div>
+    <div class="col-3 offset-1 d-flex my-3 justify-content-around bg-body-secondary shadow-sm rounded align-items-center bg-box">
+      <h3 class="share-title">Share</h3>
+      <h3 class="share"><a class="social" href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>  <a class="social" href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>  <a class="social" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></h3></a>
+    </div>
   </div>
 
- <div class="row">
-    <div class="col-8 my-3 bg-body-secondary shadow-sm rounded">
-    <h3 class="subheader">Description</h3>
-      <p class='desc'><%= @vehicle.description %></p>
+  <div class="row">
+    <div class="col-8 my-3 bg-body-secondary shadow-sm rounded bg-box">
+      <h3 class="subheader px-3 pt-3">Description</h3>
+      <p class='desc px-3'><%= @vehicle.description %></p>
     </div>
-    <div class="col-2 offset-1 d-flex my-3 justify-content-between bg-body-secondary shadow-sm rounded align-items-center">
-      <h3 class="share-title">Share</h3>
-      <h3 class="share"><a class="social" href=""><i class="fa-brands fa-facebook"></i></a>  <a class="social" href=""><i class="fa-brands fa-twitter"></i></a>  <a class="social" href=""><i class="fa-brands fa-instagram"></i></h3></a>
+    <div class="col-3 offset-1 my-3 justify-content-between bg-body-secondary shadow-sm rounded align-items-center bg-box">
+      <h3 class="subheader pt-3 px-1">Specifications</h3>
+      <div class="price-guests px-1">
+        <p class="fw-semibold mb-0">Price per day: <i class="fst-normal fw-normal"><%= @vehicle.price_per_day %></i> <i class="fst-normal fw-normal">CHF</i></p> <br>
+        <p class="fw-semibold mb-0">Brand: <i class="fst-normal fw-normal"><%= @vehicle.brand %></i></p> <br>
+        <p class="fw-semibold mb-0">Model: <i class="fst-normal fw-normal"><%= @vehicle.model %></i></p> <br>
+        <p class="fw-semibold">Location: <i class="fst-normal fw-normal"><%= @vehicle.location %></i></p>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 my-3 bg-body-secondary shadow-sm rounded">
-      <h3 class="subheader">Specifications</h3>
-      <div class="price-guests">
-        <p>Price per day: <i class="fa-solid fa-euro-sign m-3"><%= @vehicle.price_per_day %></i></p>
-      </div>
-    </div>
     <% if policy(@vehicle).edit? && policy(@vehicle).destroy? %>
-      <div class="col-2 offset-1 d-flex my-3 justify-content-evenly bg-body-secondary shadow-sm rounded align-items-center">
+      <div class="col-3 offset-9 d-flex my-3 justify-content-around bg-body-secondary shadow-sm rounded align-items-center px-2 py-3 bg-box">
           <%= link_to "Delete", delete_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary", method: :delete %>
           <%= link_to 'Edit', edit_vehicle_path(@vehicle), class: 'btn btn-primary' %>
       </div>
     <% end %>
+  </div>
 </div>
