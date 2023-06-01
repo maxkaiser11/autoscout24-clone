@@ -2,7 +2,7 @@
 
 <div class="container mb-5">
   <%= simple_form_for [@vehicle] do |f| %>
-    <%= f.input :type_of_vehicle, collection: ["car", "bike"], prompt: "Select vehicle type" %>
+    <%= f.input :type_of_vehicle, collection: ["Car", "Bike"], prompt: "Select vehicle type" %>
     <%= f.input :title %>
     <%= f.input :image_url %>
     <%= f.input :price_per_day %>
