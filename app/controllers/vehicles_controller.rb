@@ -4,6 +4,14 @@ before_action :set_vehicle, only: %i[show edit update destroy]
 
   def index
     @vehicles = policy_scope(Vehicle)
+
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        vehicles.brand ILIKE :query
+        OR vehicles.model ILIKE :query
+      SQL
+      @vehicles = @vehicles.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show

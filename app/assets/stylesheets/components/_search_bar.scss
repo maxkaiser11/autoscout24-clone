@@ -1,0 +1,40 @@
+.search {
+  width: 400px;
+  height: 40px;
+  margin: auto;
+  position: relative;
+  display:flex;
+  flex-direction:row;
+  padding:1px;
+  margin-left: 0px;
+ }
+
+
+.form-control {
+  width: 100%;
+  padding-right: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+
+}
+
+.form-control:placeholder-shown+button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search .btn {
+  position: absolute;
+  font-weight: bold;
+  
+  display: block;
+  line-height: 13px;
+  font-size: 12px;
+  border-radius: 19px;
+  top: 1.5px;
+  bottom: 1.75px;
+  right: 1.5px;
+  outline: none;
+  cursor: pointer;
+  transition: .1s;
+}
