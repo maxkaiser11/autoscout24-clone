@@ -1,16 +1,20 @@
 
 <h1 class="text-center mt-3">Your Reservations</h1>
-<div class="container text-center">
-  <div class="row align-items-center">
+<div class="container">
+  <div class="row">
     <% @reservations.each do |reservation| %>
-      <div class="card text-bg-dark card-reservation col-3 d-flex-col" style=" background-image : url(<%= image_path(reservation.vehicle.image_url, class: "card-img card-reservation")%> ) ">
-      <div class="card-img-overlay">
+      <div class="card text-bg-dark card-reservation col-3 d-flex-col" style="background-image : url(<%= image_path(reservation.vehicle.image_url, class: "card-img card-reservation")%> ) ">
+        <div class="card-img-overlay">
         <h1 class="card-title card-reservation-title"><%= reservation.vehicle.model%></h1>
         <p class="card-text card-reservation-text">Start Date: <%= reservation.start_date %></p>
         <p class="card-text card-reservation-text">End Date: <%= reservation.end_date %></p>
-        <i class="fa-regular fa-circle-xmark"></i>
+        <i class='<%= reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>' ></i>
+        <%= link_to "More", reservation_path(reservation), class: "btn btn-light btn-sm text-decoration-none text" %>
+        <% if policy(reservation).accept? %>
+          <%= button_to "Accept", accept_reservation_path(reservation), method: :patch %>
+        <% end %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

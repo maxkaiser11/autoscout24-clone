@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :reservations
+  resources :reservations do
+    patch 'accept', on: :member
+  end
+  delete 'reservations/:id', to: 'reservations#destroy', as: :delete_reservation
   root to: 'vehicles#index'
   # get 'new', to: "vehicles#new", as: :new_vehicle
   # get 'vehicles/:id', to: "vehicles#show", as: :vehicle

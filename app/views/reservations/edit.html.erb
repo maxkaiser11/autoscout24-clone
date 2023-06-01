@@ -1,2 +1,10 @@
-<h1>Reservations#edit</h1>
-<p>Find me in app/views/reservations/edit.html.erb</p>
+
+
+<div class="container mt-3">
+  <h1>Edit Reservation</h1>
+  <%= simple_form_for(@reservation) do |f| %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.submit "Update", :class => "btn btn-primary mb-3 mx-1" %>
+  <% end %>
+</div>

@@ -1,2 +1,17 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+<div class="container background-image">
+  <h1 class="my-3"><%= @reservation.vehicle.brand %> - <%= @reservation.vehicle.model %></h1>
+  <%= image_tag @reservation.vehicle.image_url, size: "500x300" %>
+  <div class="border-bottom">
+    <h5 class="my-3">Start date: <%= @reservation.start_date %></h5>
+  </div>
+  <div class="border-bottom">
+    <h5 class="my-3">End date: <%= @reservation.end_date %></h5>
+  </div>
+  <div class="border-bottom mb-3">
+    <p class="my-3"><%= @reservation.vehicle.description %></p>
+  </div>
+  <div class="border-bottom mb-3 d-flex">
+    <p class="me-3">Confirmed:</p><i class='<%= @reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
+  </div>
+  <%= link_to "Edit", edit_reservation_path, class: "btn btn-primary" %>
+</div>
