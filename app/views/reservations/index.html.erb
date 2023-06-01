@@ -1,16 +1,35 @@
-
-<h1 class="text-center mt-3">Your Reservations</h1>
-<div class="container text-center">
-  <div class="row align-items-center">
-    <% @reservations.each do |reservation| %>
-      <div class="card text-bg-dark card-reservation col-3 d-flex-col" style=" background-image : url(<%= image_path(reservation.vehicle.image_url, class: "card-img card-reservation")%> ) ">
-      <div class="card-img-overlay">
-        <h1 class="card-title card-reservation-title"><%= reservation.vehicle.model%></h1>
-        <p class="card-text card-reservation-text">Start Date: <%= reservation.start_date %></p>
-        <p class="card-text card-reservation-text">End Date: <%= reservation.end_date %></p>
-        <i class="fa-regular fa-circle-xmark"></i>
+<section class="wrapper mt-1">
+  <div class="container">
+  <div class="row pt-4">
+    <div class="col-12">
+      <h3 class="text border-bottom mb-4">Your Reservations</h3>
+    </div>
+  </div>
+  <div class="row">
+  <% @reservations.each do |reservation| %>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb4"><div class="card card-reservation text-white card-has-bg click-col" style="background-image:url(<%= image_path(reservation.vehicle.image_url) %>)" >
+      <img src=<%= image_path(reservation.vehicle.image_url) %> alt="Card image" class="card-img d-none">
+    <div class="card-img-overlay d-flex flex-column">
+      <div class="card-body">
+        <small class="card-meta mb-2">Some text</small>
+        <h4 class="card-title mt-0"><a href="#" class="text-white"><%= reservation.vehicle.title %></a></h4>
+        <small><i class="far fa-clock"></i> Start date: <%= reservation.start_date %></small>
+        <br>
+        <small><i class="far fa-clock"></i> End date: <%= reservation.end_date %></small>
+      </div>
+      <div class="card-footer">
+        <div class="media">
+    <img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1681470947/fxgx8omxqqg04xkbfcrn.jpg" alt="Profile picture" class="mr-3 rounded-circle" style="max-width: 50px">
+    <div class="media-body">
+      <h6 class="my-0 text-white d-block"><%= current_user %></h6>
+        <small>Wants to reserve</small>
+        <i class='<%= reservation.accepted? ? "fa-light fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
+    </div>
+        </div>
       </div>
     </div>
-    <% end %>
+    </div>
+    </div>
+  <% end %>
   </div>
-</div>
+</section>
