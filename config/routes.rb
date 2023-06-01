@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
   delete 'vehicles/:id', to: 'vehicles#destroy', as: :delete
   devise_for :users
+  get 'profile', to: 'profile#index', as: :profile
 end
