@@ -2,13 +2,14 @@ class ReservationPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      scope.joins(vehicle: :user).where(vehicle: { user_id: user.id }).or(scope.where(user_id: user.id))
     end
   end
 
   def index?
     record.user == user
   end
+
   def show?
     record.user == user
   end
@@ -31,5 +32,9 @@ class ReservationPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  def accept?
+    user == record.vehicle.user
   end
 end

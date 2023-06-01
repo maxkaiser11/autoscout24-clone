@@ -27,6 +27,21 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def accept
+    @reservation = Reservation.find(params[:id])
+
+    # Authorize the action using the policy
+    authorize @reservation
+
+    if @reservation.accepted?
+      flash[:error] = "The reservation has already been accepted."
+      redirect_to @reservation
+    else
+      @reservation.update(accepted: true)
+      redirect_to reservations_path
+    end
+  end
+
   def edit
     authorize @reservation
   end
