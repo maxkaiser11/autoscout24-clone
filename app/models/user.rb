@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :vehicles
   has_many :reservations
+  has_one_attached :photo
 
   def vehicle_owner?
     vehicles.any?
