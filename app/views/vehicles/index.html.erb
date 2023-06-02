@@ -35,6 +35,7 @@
           <%= image_tag(vehicle.image_url, class: "card-img-top car-img") %>
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"><%= vehicle.title %></h5>
+            <p class="card-text mb-4"><%= vehicle.description %></p>
             <%= link_to "Show more", vehicle_path(vehicle), class: "btn btn-primary rounded-pill btn-sm mt-auto align-self-start" %>
           </div>
         </div>
