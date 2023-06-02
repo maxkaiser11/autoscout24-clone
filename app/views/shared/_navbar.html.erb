@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand ms-5" do %>
       <%= image_tag "https://i.stack.imgur.com/17UsL.png" %>
     <% end %>
 
@@ -11,16 +11,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item active me-3">
             <%= link_to "Home",  root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item me-3">
             <%= link_to "New Listing", new_vehicle_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item me-3">
             <%= link_to "Reservations", reservations_path, class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown me-3">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key , class: "avatar", alt: "dropdown menu" %>
