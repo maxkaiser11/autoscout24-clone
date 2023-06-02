@@ -1,18 +1,32 @@
-<div class="container background-image">
-  <h1 class="my-3"><%= @reservation.vehicle.brand %> - <%= @reservation.vehicle.model %></h1>
-  <%= image_tag @reservation.vehicle.image_url, size: "500x300" %>
-  <div class="border-bottom">
-    <h5 class="my-3">Start date: <%= @reservation.start_date %></h5>
+
+
+<div class="container my-3">
+  <div class="row">
+    <div class="col-12 shadow-sm rounded my-3 justify-content-center">
+      <div>
+        <h3 class='title-show pt-3 ps-3'><%= @reservation.vehicle.brand %></h3>
+        <h2 class='title-show pb-0 ps-3 fw-bold'><%= @reservation.vehicle.model %></h2>
+      </div>
+      <div class="col-12 d-flex">
+        <div class="col-6 my-3">
+          <%= image_tag(@reservation.vehicle.image_url, class: "banner-img")%>
+        </div>
+        <div class=" col-5 offset-1 pe-3 pt-2">
+          <div class="">
+            <h5 class="my-3">Start date: <%= @reservation.start_date %></h5>
+          </div>
+          <div class="">
+            <h5 class="my-3">End date: <%= @reservation.end_date %></h5>
+          </div>
+          <div class="mb-3">
+            <p class="my-3"><%= @reservation.vehicle.description %></p>
+          </div>
+          <div class="mb-3 d-flex">
+            <p class="me-3">Confirmed:</p><i class='<%= @reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
+          </div>
+            <%= link_to "Edit", edit_reservation_path, class: "btn btn-primary rounded-pill" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="border-bottom">
-    <h5 class="my-3">End date: <%= @reservation.end_date %></h5>
-  </div>
-  <div class="border-bottom mb-3">
-    <p class="my-3"><%= @reservation.vehicle.description %></p>
-  </div>
-  <div class="border-bottom mb-3 d-flex">
-    <p class="me-3">Confirmed:</p><i class='<%= @reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
-  </div>
-  <%= link_to "Edit", edit_reservation_path, class: "btn btn-primary" %>
-  <%= link_to "" %>
 </div>

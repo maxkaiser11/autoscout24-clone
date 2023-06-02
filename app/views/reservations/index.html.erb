@@ -1,4 +1,4 @@
-
+<%# In 'reservation requests, show me MY cars that other people requested %>
 <section class="wrapper mt-1">
   <div class="container">
   <div class="row pt-4">
@@ -18,27 +18,93 @@
         <small><i class="far fa-clock"></i> Start date: <%= reservation.start_date %></small>
         <br>
         <small><i class="far fa-clock"></i> End date: <%= reservation.end_date %></small>
+    <div class="row pt-4">
+      <div class="col-12">
+        <h3 class="text border-bottom mb-4">Reservation requests</h3>
       </div>
-      <div class="card-footer">
-        <div class="media">
-    <img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1681470947/fxgx8omxqqg04xkbfcrn.jpg" alt="Profile picture" class="mr-3 rounded-circle" style="max-width: 50px">
-    <div class="media-body d-flex justify-content-between align-items-center">
-      <% if !reservation.accepted %>
-        <small>Wants to reserve</small>
-      <% else %>
-        <small>Reserved</small>
-      <% end %>
-        <i class='<%= reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
     </div>
-    <% if policy(reservation).accept? && !reservation.accepted %>
-          <%= button_to "Accept", accept_reservation_path(reservation), method: :patch, class: "btn btn-light button-accept"%>
-        <% end %>
+    <div class="row">
+      <% @requests.each do |request| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+          <div class="card card-reservation text-white card-has-bg click-col" style="background-image:url(<%= image_path(request.vehicle.image_url) %>)">
+            <img src=<%= image_path(request.vehicle.image_url) %> alt="Card image" class="card-img d-none">
+            <div class="card-img-overlay d-flex flex-column">
+              <div class="card-body">
+                <small class="card-meta mb-2"><%= request.vehicle.type_of_vehicle %></small>
+                <h4 class="card-title mt-0"><%= link_to request.vehicle.title, reservation_path(request), class: "text-white" %></h4>
+                <small><i class="far fa-clock"></i> Start date: <%= request.start_date %></small>
+                <br>
+                <small><i class="far fa-clock"></i> End date: <%= request.end_date %></small>
+              </div>
+              <div class="card-footer">
+                <div class="media">
+                  <% if request.user.photo.attached? %>
+                    <%= cl_image_tag(request.user.photo.key, alt: "Profile picture", class: "mr-3 rounded-circle avatar", style: "max-width: 50px") %>
+                  <% else %>
+                    <%= image_tag "https://img.freepik.com/premium-vector/flat-instagram-icons-notifications_619991-50.jpg", class: "avatar" %>
+                  <% end %>
+                  <div class="media-body d-flex justify-content-between align-items-center">
+                    <% if request.accepted? %>
+                      <small>Reserved</small>
+                    <% else %>
+                      <small>Wants to reserve</small>
+                    <% end %>
+                    <i class='<%= request.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
+                  </div>
+                  <% if policy(request).accept? && !request.accepted %>
+                    <%= button_to "Accept", accept_reservation_path(request), method: :patch, class: "btn btn-light button-accept"%>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="wrapper mt-1">
+  <div class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h3 class="text border-bottom mb-4">My Reservations</h3>
       </div>
     </div>
+    <div class="row">
+      <% @reservations.each do |reservation| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+          <div class="card card-reservation text-white card-has-bg click-col" style="background-image:url(<%= image_path(reservation.vehicle.image_url) %>)">
+            <img src=<%= image_path(reservation.vehicle.image_url) %> alt="Card image" class="card-img d-none">
+            <div class="card-img-overlay d-flex flex-column">
+              <div class="card-body">
+                <small class="card-meta mb-2"><%= reservation.vehicle.type_of_vehicle %></small>
+                <h4 class="card-title mt-0"><%= link_to reservation.vehicle.title, reservation_path(reservation), class: "text-white" %></h4>
+                <small><i class="far fa-clock"></i> Start date: <%= reservation.start_date %></small>
+                <br>
+                <small><i class="far fa-clock"></i> End date: <%= reservation.end_date %></small>
+              </div>
+              <div class="card-footer">
+                <div class="media">
+                  <% if current_user.photo.attached? %>
+                    <%= cl_image_tag(current_user.photo.key, alt: "Profile picture", class: "mr-3 rounded-circle avatar", style: "max-width: 50px") %>
+                  <% else %>
+                    <%= image_tag "https://img.freepik.com/premium-vector/flat-instagram-icons-notifications_619991-50.jpg", class: "avatar" %>
+                  <% end %>
+                  <div class="media-body d-flex justify-content-between align-items-center">
+                    <% if !reservation.accepted %>
+                      <small>Pending</small>
+                    <% else %>
+                      <small>Accepted</small>
+                    <% end %>
+                    <i class='<%= reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    </div>
-  <% end %>
-
   </div>
 </section>
