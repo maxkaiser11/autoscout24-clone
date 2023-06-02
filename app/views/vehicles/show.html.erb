@@ -9,12 +9,12 @@
         <div class="col-6 my-3">
           <%= image_tag(@vehicle.image_url, class: "banner-img")%>
         </div>
-          <div class=" col-5 offset-1 pe-3 pt-2">
-            <p class="book fw-bolder">Select your dates </p>
-              <%= simple_form_for(@reservation, url: create_reservation_vehicle_path(@vehicle)) do |f| %>
-                <%= f.input :start_date, as: :date, class: "background-input" %>
-                <%= f.input :end_date, as: :date %>
-                <div class="background-price mb-3">
+        <div class="col-5 offset-1 pe-3 pt-2">
+          <p class="book fw-bolder">Select your dates </p>
+          <%= simple_form_for(@reservation, url: create_reservation_vehicle_path(@vehicle)) do |f| %>
+            <%= f.input :start_date, as: :date, class: "background-input" %>
+            <%= f.input :end_date, as: :date %>
+            <div class="background-price mb-3">
               <div class="">
                 <p class="fw-semibold mb-0 text-white">Price per day</p>
               </div>
@@ -22,44 +22,43 @@
                 <p class="price-chf mb-0"><i class="fst-normal fw-normal text-white me-2"><%= @vehicle.price_per_day %> CHF</i></p>
               </div>
             </div>
-                <%= f.submit "Reserve", :class => "btn btn-primary mb-3 mx-1 rounded-pill" %>
-              <% end %>
-
-          </div>
+            <%= f.submit "Reserve", :class => "btn btn-primary mb-3 mx-1 rounded-pill" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-6 my-3">
+    <div class="col-6 my-3 pe-3">
       <h3 class="subheader px-3 pt-3">Description</h3>
       <p class='desc px-3'><%= @vehicle.description %></p>
     </div>
     <div class="col-6 my-3 justify-content-between">
       <h3 class="subheader pt-3 px-1">Specifications</h3>
       <div class="price-guests px-1">
-          <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center pt-3 rounded me-2 align-items-center">
-            <p class="fw-regular mb-0">Price <i class="fst-normal fw-semibold"><%= @vehicle.price_per_day %> CHF</i></p> <br>
-          </div>
-          <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center pt-3">
-            <p class="fw-regular mb-0">Brand <i class="fst-normal fw-semibold"><%= @vehicle.brand %></i></p> <br>
-          </div>
-          <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center pt-3">
-           <p class="fw-regular mb-0">Model <i class="fst-normal fw-semibold"><%= @vehicle.model %></i></p> <br>
-          </div>
-           <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center pt-3">
-            <p class="fw-regular">Location <i class="fst-normal fw-semibold"><%= @vehicle.location %></i></p>
-           </div>
+        <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center p-3 rounded me-2 align-items-center">
+          <p class="fw-regular mb-0">Brand <i class="fst-normal fw-semibold"><%= @vehicle.brand %></i></p>
+        </div>
+        <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center p-3">
+          <p class="fw-regular mb-0">Model <i class="fst-normal fw-semibold"><%= @vehicle.model %></i></p>
+        </div>
+        <div class="bg-body-secondary shadow-sm rounded my-3 justify-content-center bg-box text-center p-3">
+          <p class="fw-regular mb-0">Location <i class="fst-normal fw-semibold"><%= @vehicle.location %></i></p>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-  <div class="col-3 d-flex my-3 flex-start">
-      <h3 class="share"><a class="social" href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>  <a class="social" href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>  <a class="social" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></h3></a>
+    <div class="col-3 d-flex my-3 flex-start">
+      <h3 class="share">
+        <a class="social" href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+        <a class="social" href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+        <a class="social" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+      </h3>
     </div>
     <% if policy(@vehicle).edit? && policy(@vehicle).destroy? %>
-      <div class="col-2 offset-7 d-flex my-3">
-        <div class="">
+      <div class="col-2 offset-7 d-flex my-3 ps-5">
+        <div>
           <%= link_to "Delete", delete_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary rounded-pill", method: :delete %>
         </div>
         <div class="ms-3">
