@@ -3,7 +3,8 @@ class ReservationsController < ApplicationController
   before_action :set_vehicle, only: %i[new create]
 
   def index
-    @reservations = policy_scope(Reservation)
+    @reservations = policy_scope(Reservation).where(user_id: current_user.id)
+    @requests = policy_scope(Reservation).where.not(user_id: current_user.id)
   end
 
   def show
