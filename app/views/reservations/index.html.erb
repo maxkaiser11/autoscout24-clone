@@ -31,7 +31,7 @@
         <i class='<%= reservation.accepted? ? "fa-regular fa-circle-check" : "fa-regular fa-circle-xmark mb-2" %>'></i>
     </div>
     <% if policy(reservation).accept? && !reservation.accepted %>
-          <%= button_to "Accept", accept_reservation_path(reservation), method: :patch, class: "btn btn-light button-accept"%>
+          <%= button_to "Accept", accept_reservation_path(reservation), method: :patch, class: "btn btn-light button-accept rounded-pill"%>
         <% end %>
         </div>
       </div>

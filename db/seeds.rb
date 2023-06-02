@@ -15,7 +15,8 @@
 # reservation.end_date = Date.new(2023, 1, 2)
 
 # reservation.save!
-
+Reservation.destroy_all
+Vehicle.destroy_all
 
 Vehicle.create!(type_of_vehicle: "car", title: "Beautiful Blue Mustang with modified exhaust system", image_url: "https://cdn.motor1.com/images/mgl/P3nLMK/s1/2024-ford-mustang-dark-horse.webp", price_per_day: 400, location: "Kloten", brand: "Ford", model: "Mustang", description: "awesome", year: 2022, user_id: 1)
 Vehicle.create!(type_of_vehicle: "car", title: "Brand new Fiat 500", image_url: "https://cdn.panorica.com/sites/default/files/first-image-gallery/Fiat-500-electric-car-2023-003.webp", price_per_day: 70, location: "Fiat Lugano", brand: "Fiat", model: "500", description: "Brand new fiat 500 in babyblue. Great for the city life or lake life.", year: 2023, user_id: 1)
