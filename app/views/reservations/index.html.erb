@@ -1,6 +1,23 @@
 <%# In 'reservation requests, show me MY cars that other people requested %>
 <section class="wrapper mt-1">
   <div class="container">
+  <div class="row pt-4">
+    <div class="col-12">
+      <h3 class="text border-bottom mb-4">Your Reservations</h3>
+    </div>
+  </div>
+  <div class="row">
+<% @reservations.each do |reservation| %>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+      <div class="card card-reservation text-white card-has-bg click-col" style="background-image:url(<%= image_path(reservation.vehicle.image_url) %>)" >
+        <img src=<%= image_path(reservation.vehicle.image_url) %> alt="Card image" class="card-img d-none">
+    <div class="card-img-overlay d-flex flex-column">
+      <div class="card-body">
+        <small class="card-meta mb-2"><%= reservation.vehicle.type_of_vehicle %></small>
+        <h4 class="card-title mt-0"><%= link_to  reservation.vehicle.title, reservation_path(reservation), class: "text-white"%> </h4>
+        <small><i class="far fa-clock"></i> Start date: <%= reservation.start_date %></small>
+        <br>
+        <small><i class="far fa-clock"></i> End date: <%= reservation.end_date %></small>
     <div class="row pt-4">
       <div class="col-12">
         <h3 class="text border-bottom mb-4">My Reservations</h3>

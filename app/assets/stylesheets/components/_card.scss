@@ -95,3 +95,44 @@ h4 > a {
   color: #00fa53;
   text-align: left;
 }
+
+.reserve-button {
+  border: 2px solid #246bfd;
+  color: #246bfd;
+  border-radius: 30px;
+  font-size: 12px;
+  overflow: hidden;
+  padding: 5px;
+  position: relative;
+  transition: all .5s ease;
+  z-index: 0;
+  text-decoration: none;
+}
+
+.reserve-button:after {
+  content: "";
+  height: 100%;
+  left: -35%;
+  position: absolute;
+  top: 0;
+  background: #246bfd;
+  -webkit-transform: skew(30deg);
+  transform: skew(30deg);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  transition: all .3s ease-in;
+  transition-duration: .6s;
+  width: 0;
+  z-index: -1;
+}
+
+.reserve-button:hover {
+  color: #fff;
+  background-color: #ffffff00;
+  border-color: #ffffff00;
+}
+
+.reserve-button:hover:after {
+  height: 100%;
+  width: 135%;
+}
