@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row">
-  <% @reservations.each do |reservation| %>
+<% @reservations.each do |reservation| %>
     <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
       <div class="card card-reservation text-white card-has-bg click-col" style="background-image:url(<%= image_path(reservation.vehicle.image_url) %>)" >
         <img src=<%= image_path(reservation.vehicle.image_url) %> alt="Card image" class="card-img d-none">

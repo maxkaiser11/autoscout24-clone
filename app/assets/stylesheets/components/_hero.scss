@@ -1,0 +1,117 @@
+
+
+$main-font: 'PT Sans', sans-serif;
+
+// Colors
+$text-color: #444;
+$title-color: #3c3c3c;
+
+
+
+html,
+body{
+  width: 100%;
+  height: 100%;
+}
+
+section{
+  position: relative;
+  width: 100%;
+}
+
+
+/*##### HERO SECTION #####*/
+
+.hero{
+  height: 550px;
+  /* Credit image : Unsplash - Luke Chesser */
+  background: linear-gradient(250deg, rgba(200, 206, 244, 0.1803921568627451) 0%, rgba(163, 169, 226, 0.401) 50%), url('https://hips.hearstapps.com/hmg-prod/images/2016-bmw-m2-202-1585760824.jpg?crop=0.998xw:0.827xh;0,0.0851xh&resize=1200:*');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.header {
+  text-align: left;
+  position: absolute;
+  top: 20%;
+  bottom: 50%;
+  margin-left: 100px;
+}
+
+.hero-title {
+  font-family: 'Monomaniac One', sans-serif;
+  font-size: 60px;
+  color: #EFF6FF;
+  font-weight: bold;
+  //text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.hero-subtitle {
+  font-family: 'Monomaniac One', sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  //text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.hero-text {
+  font-family: 'Monomaniac One', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  display: block;
+  width: 300px;
+}
+.scroll-down {
+  opacity: 1;
+  -webkit-transition: all .5s ease-in 3s;
+  transition: all .5s ease-in 3s;
+}
+
+.scroll-down {
+  position: absolute;
+  top: 70%;
+  bottom: 50%;
+  left: 45%;
+  margin-left: -16px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #ffffff;
+  background-size: 14px auto;
+  background-color: #78ddeca2;
+  border-radius: 50%;
+  z-index: 2;
+  animation: bounce 2s infinite 2s;
+  transition: all .2s ease-in;
+  transform: scale(1)
+}
+
+.scroll-down:before {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 6px);
+    transform: rotate(-45deg);
+    display: block;
+    width: 12px;
+    height: 12px;
+    content: "";
+    border: 2px solid rgb(255, 255, 255);
+    border-width: 0px 0 2px 2px;
+}
+
+@keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
