@@ -21,7 +21,11 @@
               </div>
               <div class="card-footer">
                 <div class="media">
-                  <img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1681470947/fxgx8omxqqg04xkbfcrn.jpg" alt="Profile picture" class="mr-3 rounded-circle" style="max-width: 50px">
+                  <% if request.user.photo.attached? %>
+                    <%= cl_image_tag(request.user.photo.key, alt: "Profile picture", class: "mr-3 rounded-circle avatar", style: "max-width: 50px") %>
+                  <% else %>
+                    <%= image_tag "https://img.freepik.com/premium-vector/flat-instagram-icons-notifications_619991-50.jpg", class: "avatar" %>
+                  <% end %>
                   <div class="media-body d-flex justify-content-between align-items-center">
                     <% if request.accepted? %>
                       <small>Reserved</small>
@@ -66,7 +70,7 @@
               <div class="card-footer">
                 <div class="media">
                   <% if current_user.photo.attached? %>
-                    <img src="<%= cl_image_tag current_user.photo.key %>" alt="Profile picture" class="mr-3 rounded-circle avatar" style="max-width: 50px">
+                    <%= cl_image_tag(current_user.photo.key, alt: "Profile picture", class: "mr-3 rounded-circle avatar", style: "max-width: 50px") %>
                   <% else %>
                     <%= image_tag "https://img.freepik.com/premium-vector/flat-instagram-icons-notifications_619991-50.jpg", class: "avatar" %>
                   <% end %>
